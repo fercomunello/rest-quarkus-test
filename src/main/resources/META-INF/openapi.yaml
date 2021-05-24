@@ -1,0 +1,63 @@
+openapi: 3.0.1
+info:
+  title: Static OpenAPI document of movies resource
+  description: Movie resources Open API documentation
+  version: "1.0"
+
+servers:
+  - url: http://localhost:8080/
+    description: API Documentation
+
+paths:
+  /movies:
+    get:
+      responses:
+        200:
+          description: OK - movies list
+          content:
+            application/json: {}
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+      responses:
+        201:
+          description: new movie resource created
+          content:
+            application/json: {}
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+      responses:
+        201:
+          description: movie resource updated
+          content:
+            application/json: {}
+    delete:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+      responses:
+        204:
+          description: OK - movie resource deleted
+          content:
+            application/json: {}
+        400:
+          description: Bad Request - if movie was not found
+components:
+  schemas:
+    Movie:
+      properties:
+        id:
+          type: integer
+          description: Movie id
+        name:
+          type: string
+          default: Movie name
